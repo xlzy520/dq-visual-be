@@ -1,5 +1,5 @@
 ### 注册
-POST http://localhost:5000/user/register
+POST {{url}}/user/register
 Content-Type: application/json
 
 {
@@ -8,7 +8,7 @@ Content-Type: application/json
 }
 
 ### 登录
-POST http://localhost:5000/user/login
+POST {{url}}/user/login
 Content-Type: application/json
 
 {
@@ -16,3 +16,18 @@ Content-Type: application/json
   "password": "12345678"
 }
 
+### 用户信息
+GET {{url}}/user/info
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+### 重置密码
+POST {{url}}/user/resetPassword
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+  "id": "4113d54f-4b98-4680-adc6-d6c9b82cdd0e",
+  "password": "12345678",
+  "newPassword": "123456"
+}
