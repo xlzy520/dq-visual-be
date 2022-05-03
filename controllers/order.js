@@ -25,9 +25,10 @@ const OrderSchema = Joi.object({
 
 class OrderController {
   static page(ctx) {
-    const { page = 1, pageSize = 10 } = ctx.request.body;
+    const { page = 1, pageSize = 10, ...rest } = ctx.request.body;
     const OrderDB = DB().get('orders');
-    const ordersPage = OrderDB.sortBy('createTime')
+    const ordersPage = OrderDB.filter(rest)
+      .sortBy('createTime')
       .pagination(page, pageSize)
       .value();
     ctx.body = result(ordersPage);
@@ -55,6 +56,13 @@ class OrderController {
       ordersDB.find({ id }).assign(rest).write();
       ctx.body = result(null, '更新成功');
     }
+  }
+
+  static detail(ctx) {
+    const { id } = ctx.request.body;
+    const ordersDB = DB().get('orders');
+    const data = ordersDB.find({ id }).value();
+    ctx.body = result(data, '查询成功');
   }
 
   static delete(ctx) {

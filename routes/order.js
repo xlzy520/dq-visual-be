@@ -11,6 +11,7 @@ router.prefix('/order');
 router.post('/page', Order.page);
 router.post('/add', Order.add);
 router.post('/update', Order.update);
+router.post('/detail', Order.detail);
 router.post('/delete', Order.delete);
 
 module.exports = router;

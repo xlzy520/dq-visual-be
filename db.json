@@ -28,5 +28,23 @@
       "creatTime": 1651576403191,
       "updateTime": 1651576773513
     }
+  ],
+  "exportMainTrade": [
+    {
+      "year": 2016,
+      "data": []
+    }
+  ],
+  "tradeAmount": [
+    {
+      "year": 2016,
+      "data": []
+    }
+  ],
+  "benefit": [
+    {
+      "year": 2016,
+      "data": []
+    }
   ]
 }
