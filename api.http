@@ -1,3 +1,5 @@
+## 用户
+
 ### 注册
 POST {{url}}/user/register
 Content-Type: application/json
@@ -13,7 +15,7 @@ Content-Type: application/json
 
 {
   "username": "zhibi",
-  "password": "12345678"
+  "password": "123456"
 }
 
 ### 用户信息
@@ -30,4 +32,47 @@ Authorization: Bearer {{token}}
   "id": "4113d54f-4b98-4680-adc6-d6c9b82cdd0e",
   "password": "12345678",
   "newPassword": "123456"
+}
+
+###
+## 订单
+
+### 订单列表
+POST {{url}}/order/page
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+  "page": 1,
+  "size": 10
+
+}
+
+### 添加订单
+POST {{url}}/order/add
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+  "shopName": "123456789",
+  "username": "231231",
+  "address": "1",
+  "shopAddress": "1",
+  "price": 100,
+  "PaymentStatus": "1"
+}
+
+### 更新订单
+POST {{url}}/order/update
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+  "id": "f82ce8b5-7df1-4d4b-bf4b-2b786b5a9107",
+  "shopName": "123456789",
+  "username": "231231",
+  "address": "1",
+  "shopAddress": "1",
+  "price": 9,
+  "PaymentStatus": "1"
 }
