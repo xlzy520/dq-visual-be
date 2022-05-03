@@ -69,22 +69,10 @@ class UserController {
   }
 
   static async getUserList(ctx, next) {
-    // let userList = ctx.request.body;
-    // if (userList) {
-    //     const data = await userModel.findAllUserList();
-
-    //     ctx.response.status = 200;
-    //     ctx.body = statusCode.SUCCESS_200('查询成功', data)
-    // } else {
-
-    //     ctx.response.status = 412;
-    //     ctx.body = statusCode.ERROR_412('获取失败')
-
-    // }
-    let data = await userModel.findAllUserList();
-
+    const usersDB = DB().get('users');
+    const users = usersDB.value();
     ctx.response.status = 200;
-    ctx.body = statusCode.SUCCESS_200('查询成功', data);
+    ctx.body = statusCode.SUCCESS_200('查询成功', users);
   }
 
   /**
@@ -132,7 +120,7 @@ class UserController {
   }
 
   static async getUserInfo(ctx, next) {
-    let userInfo = await userModel.getUserInfo(ctx.state.user.phone);
+    let userInfo = ctx.state.userInfo;
     if (userInfo) {
       ctx.body = result(userInfo, '查询成功');
     } else {
@@ -140,39 +128,21 @@ class UserController {
     }
   }
 
-  static async getQuestion(ctx, next) {
-    const { phone } = ctx.request.body;
-    const userInfo = await userModel.findUserByPhone(phone);
-    if (userInfo) {
-      const question = userInfo.question;
-      ctx.body = result(
-        {
-          question,
-        },
-        '查询成功',
-      );
-    } else {
-      ctx.body = result(null, error_msg.phone_not_exist, false);
-    }
-  }
-
   static async resetPassword(ctx, next) {
-    let { phone, answer, newPassword } = ctx.request.body;
-    if (!newPassword) {
+    let { id, newPassword, password } = ctx.request.body;
+    if (!newPassword || !password) {
       ctx.body = result(null, error_msg.password_null, false);
+      return;
     }
-    const userInfo = await userModel.findUserByPhone(phone);
-    if (userInfo) {
-      if (answer === userInfo.answer) {
-        const salt = bcrypt.genSaltSync(); // 密码加密的计算强度默认10级
-        const hash = bcrypt.hashSync(newPassword, salt);
-        await userModel.resetPassword(userInfo, hash);
-        ctx.body = result();
-      } else {
-        ctx.body = result(null, error_msg.answer_error, false);
-      }
+    const usersDB = DB().get('users');
+    const user = usersDB.find({ id }).value();
+    if (bcrypt.compareSync(password, user.password)) {
+      const salt = bcrypt.genSaltSync(); // 密码加密的计算强度默认10级
+      const hash = bcrypt.hashSync(newPassword, salt);
+      usersDB.find({ id }).assign({ password: hash }).write();
+      ctx.body = result(null, '修改密码成功');
     } else {
-      ctx.body = result(null, error_msg.phone_not_exist, false);
+      ctx.body = result(null, error_msg.answer_error, false);
     }
   }
 }

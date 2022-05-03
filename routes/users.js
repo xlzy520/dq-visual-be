@@ -1,9 +1,7 @@
+const router = require('koa-router')();
+const UserController = require('../controllers/user');
 
-const router = require('koa-router')()
-const UserController = require('../controllers/user')
-
-
-router.prefix('/user')
+router.prefix('/user');
 
 /**
  * 用户接口
@@ -20,6 +18,5 @@ router.get('/info', UserController.getUserInfo);
 // 获取用户列表
 router.post('/list', UserController.getUserList);
 router.post('/resetPassword', UserController.resetPassword);
-router.post('/getQuestion', UserController.getQuestion);
 
-module.exports = router
+module.exports = router;
