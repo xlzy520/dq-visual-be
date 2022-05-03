@@ -1,13 +1,11 @@
 const bcrypt = require('bcryptjs'); // 密码加密
 const jwt = require('jsonwebtoken'); // 签发token给前端
 const secret = require('../config/secret');
-// const userModel = require('../modules/user');
 const statusCode = require('../utils/status-code');
 const { DB } = require('../db');
 const result = require('../utils/result');
 const error_msg = require('../utils/error_msg');
 const Joi = require('joi');
-const uuid4 = require('uuid4');
 
 const UserSchema = Joi.object({
   username: Joi.string()
@@ -17,6 +15,13 @@ const UserSchema = Joi.object({
     .required()
     .error((errors) => new Error('密码不能为空')),
 });
+
+const generateToken = (username) => {
+  const token = jwt.sign({ username }, secret.sign, {
+    expiresIn: '2d',
+  });
+  return token;
+};
 
 class UserController {
   /**
@@ -29,7 +34,6 @@ class UserController {
 
     const { error } = UserSchema.validate(userParams);
     if (error) {
-      ctx.response.status = 200;
       ctx.body = result(null, error.message, false);
     } else {
       const usersDB = DB().get('users');
@@ -42,22 +46,13 @@ class UserController {
         const salt = bcrypt.genSaltSync(); // 密码加密的计算强度默认10级
         const hash = bcrypt.hashSync(password, salt);
         // 创建用户
-        const id = uuid4();
         const newUser = {
-          id,
           username,
           password: hash,
         };
         usersDB.push(newUser).write();
         // 签发token
-        const userToken = {
-          username,
-          id,
-        };
-
-        // 储存token失效有效期1小时
-        const token = jwt.sign(userToken, secret.sign, { expiresIn: '2d' });
-        ctx.response.status = 200;
+        const token = generateToken(username);
         ctx.body = result(
           {
             token,
@@ -71,7 +66,6 @@ class UserController {
   static async getUserList(ctx, next) {
     const usersDB = DB().get('users');
     const users = usersDB.value();
-    ctx.response.status = 200;
     ctx.body = statusCode.SUCCESS_200('查询成功', users);
   }
 
@@ -85,7 +79,6 @@ class UserController {
 
     const { error } = UserSchema.validate(userParams);
     if (error) {
-      ctx.response.status = 200;
       ctx.body = result(null, error.message, false);
     } else {
       const usersDB = DB().get('users');
@@ -94,19 +87,13 @@ class UserController {
       if (user) {
         // 查询用户密码是否正确
         if (bcrypt.compareSync(password, user.password)) {
-          const userToken = {
-            username,
-            id: user.id,
-          };
           // 签发token
-          const token = jwt.sign(userToken, secret.sign, { expiresIn: '1h' });
-
-          ctx.response.status = 200;
+          const token = generateToken(username);
           ctx.body = result(
             {
               id: user.id,
               username,
-              token: token,
+              token,
             },
             '登录成功',
           );
