@@ -14,7 +14,7 @@ createDB();
 
 // const attendance = require('./routes/attendance')
 const users = require('./routes/users');
-// const task = require("./routes/task");
+const order = require('./routes/order');
 
 const SECRET = 'secret'; // demo，可更换
 
@@ -93,8 +93,8 @@ app.use(
 );
 
 // routes
-app.use(users.routes(), users.allowedMethods());
-// app.use(task.routes(), task.allowedMethods())
+app.use(users.routes(), users.allowedMethods()); // 用户模块路由
+app.use(order.routes(), order.allowedMethods()); // 订单模块路由
 
 // error-handling
 app.on('error', (err, ctx) => {
