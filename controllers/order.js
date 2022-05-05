@@ -1,6 +1,7 @@
 const { DB } = require('../db');
 const result = require('../utils/result');
 const Joi = require('joi');
+const {value} = require("lodash/seq");
 
 const OrderSchema = Joi.object({
   shopName: Joi.string()
@@ -23,13 +24,27 @@ const OrderSchema = Joi.object({
     .error((errors) => new Error('支付状态不能为空')),
 });
 
+// 过滤非空属性
+const filterParams = params => {
+  const keys = Object.keys(params)
+  for (let i = 0; i < keys.length; i++) {
+    const key = keys[i]
+    const value =params[key]
+    if (!value) {
+      delete params[key]
+    }
+  }
+  return params
+}
+
+
 class OrderController {
   static page(ctx) {
-    const { page = 1, pageSize = 10, ...rest } = ctx.request.body;
+    const { pageNum = 1, pageSize = 10, ...rest} = ctx.request.body;
     const OrderDB = DB().get('orders');
-    const ordersPage = OrderDB.filter(rest)
+    const ordersPage = OrderDB.filter(filterParams(rest))
       .sortBy('createTime')
-      .pagination(page, pageSize)
+      .pagination(pageNum, pageSize)
       .value();
     ctx.body = result(ordersPage);
   }
