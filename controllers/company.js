@@ -5,20 +5,20 @@ const Joi = require('joi');
 const CompanySchema = Joi.object({
   name: Joi.string()
     .required()
-    .error((errors) => new Error('企业名称不能为空')),
+    .error((errors) => new Error('企业名称name不能为空')),
 
   address: Joi.string()
     .required()
-    .error((errors) => new Error('企业地址不能为空')),
+    .error((errors) => new Error('企业地址address不能为空')),
   profit: Joi.string()
     .required()
-    .error((errors) => new Error('企业利润不能为空')),
+    .error((errors) => new Error('企业利润profit不能为空')),
   phone: Joi.string()
     .required()
-    .error((errors) => new Error('联系电话不能为空')),
+    .error((errors) => new Error('联系电话phone不能为空')),
   year: Joi.string()
     .required()
-    .error((errors) => new Error('利润年份不能为空')),
+    .error((errors) => new Error('利润年份year不能为空')),
 });
 
 class Controller {

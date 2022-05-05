@@ -78,10 +78,27 @@ class Controller {
     ctx.body = result(data, '获取成功');
   }
 
-  static exportMain(ctx) {
-    const { year } = ctx.request.body;
-    const tradeDB = DB().get('exportMainTrade');
+  static tradeAmountCount(ctx) {
+    const { year = 2016 } = ctx.request.body;
+    const tradeDB = DB().get('不同类型电机出进口额的统计');
     const data = tradeDB.find({ year }).value();
+    ctx.body = result(data, '获取成功');
+  }
+
+  static exportMainTradeCount(ctx) {
+    const tradeDB = DB().get('2021年度我国电机出口主要贸易方式');
+    const data = tradeDB.value();
+    ctx.body = result(data, '获取成功');
+  }
+  static saleDetail(ctx) {
+    const { year = 2016 } = ctx.request.body;
+    const tradeDB = DB().get('电机企业近5年销售情况');
+    const data = tradeDB.find({ year }).value();
+    ctx.body = result(data, '获取成功');
+  }
+  static economicBenefits(ctx) {
+    const tradeDB = DB().get('电机企业的经济效益图');
+    const data = tradeDB.value();
     ctx.body = result(data, '获取成功');
   }
 }

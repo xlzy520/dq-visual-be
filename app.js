@@ -15,6 +15,9 @@ createDB();
 // const attendance = require('./routes/attendance')
 const users = require('./routes/users');
 const order = require('./routes/order');
+const trade = require('./routes/trade');
+const category = require('./routes/category');
+const company = require('./routes/company');
 
 const SECRET = 'secret'; // demo，可更换
 
@@ -95,6 +98,9 @@ app.use(
 // routes
 app.use(users.routes(), users.allowedMethods()); // 用户模块路由
 app.use(order.routes(), order.allowedMethods()); // 订单模块路由
+app.use(trade.routes(), trade.allowedMethods()); // 贸易统计模块路由
+app.use(category.routes(), category.allowedMethods()); // 分类模块路由
+app.use(company.routes(), company.allowedMethods()); // 企业模块路由
 
 // error-handling
 app.on('error', (err, ctx) => {

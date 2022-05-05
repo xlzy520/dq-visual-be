@@ -13,6 +13,9 @@ router.post('/add', trade.add);
 router.post('/update', trade.update);
 router.post('/delete', trade.delete);
 router.get('/tradeAmount', trade.tradeAmount);
-router.get('/exportMain', trade.exportMain);
+router.get('/tradeAmountCount', trade.tradeAmountCount);
+router.get('/exportMainTradeCount', trade.exportMainTradeCount);
+router.get('/saleDetail', trade.saleDetail);
+router.get('/economicBenefits', trade.economicBenefits);
 
 module.exports = router;
