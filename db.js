@@ -2,6 +2,7 @@ const low = require('lowdb');
 
 const fileAsync = require('lowdb/adapters/FileAsync');
 const uuid4 = require('uuid4');
+const result = require('./utils/result');
 
 let db;
 
@@ -14,15 +15,20 @@ const createDB = async () => {
       data.push({
         ...values,
         id: uuid4(),
-        creatTime: Date.now(),
+        createTime: Date.now(),
         updateTime: Date.now(),
       });
     },
-    assign: (data, values) => {
-      Object.assign(data, {
-        ...values,
-        updateTime: Date.now(),
-      });
+    assign: (data, values, ctx) => {
+      if (!data) {
+        ctx.body = result(null, '数据不存在', false);
+      } else {
+        Object.assign(data, {
+          ...values,
+          updateTime: Date.now(),
+        });
+        ctx.body = result(null, '更新成功');
+      }
     },
     pagination: (data, page, limit) => {
       const start = (page - 1) * limit;
