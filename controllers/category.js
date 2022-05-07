@@ -1,7 +1,6 @@
 const { DB } = require('../db');
 const result = require('../utils/result');
 const Joi = require('joi');
-const { filterParams } = require('../utils/index');
 
 const CategorySchema = Joi.object({
   name: Joi.string()
@@ -10,6 +9,9 @@ const CategorySchema = Joi.object({
   desc: Joi.string()
     .required()
     .error((errors) => new Error('电机简介不能为空')),
+  imgUrl: Joi.string()
+    .required()
+    .error((errors) => new Error('电机图片不能为空')),
   createTime: Joi.date(),
   updateTime: Joi.date(),
 });
