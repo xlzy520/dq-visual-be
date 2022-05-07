@@ -1,7 +1,7 @@
 const { DB } = require('../db');
 const result = require('../utils/result');
 const Joi = require('joi');
-const {filterParams} = require('../utils/index')
+const { filterParams } = require('../utils/index');
 
 const CategorySchema = Joi.object({
   name: Joi.string()
@@ -19,7 +19,7 @@ class Controller {
     const { pageNum = 1, pageSize = 10, ...rest } = ctx.request.body;
     const categoryDB = DB().get('category');
     const pageData = categoryDB
-      .filter(filterParams(rest))
+      .search(rest)
       .sortBy('createTime')
       .pagination(pageNum, pageSize)
       .value();

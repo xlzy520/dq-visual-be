@@ -3,6 +3,7 @@ const low = require('lowdb');
 const fileAsync = require('lowdb/adapters/FileAsync');
 const uuid4 = require('uuid4');
 const result = require('./utils/result');
+const { filterParams } = require('./utils');
 
 let db;
 
@@ -37,6 +38,19 @@ const createDB = async () => {
         list: data.slice(start, end),
         total: data.length,
       };
+    },
+    search: (data, params) => {
+      // const validParams = filterParams(params);
+      const keys = Object.keys(params);
+      return data.filter((item) => {
+        return keys.every((key) => {
+          const value = params[key];
+          if (!value) {
+            return true;
+          }
+          return new RegExp(params[key]).test(item[key]);
+        });
+      });
     },
   });
 };

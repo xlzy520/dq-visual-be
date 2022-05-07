@@ -1,8 +1,7 @@
 const { DB } = require('../db');
 const result = require('../utils/result');
 const Joi = require('joi');
-const {filterParams} = require('../utils/index')
-
+const { filterParams } = require('../utils/index');
 
 const CompanySchema = Joi.object({
   name: Joi.string()
@@ -30,7 +29,7 @@ class Controller {
     const { pageNum = 1, pageSize = 10, ...rest } = ctx.request.body;
     const companyDB = DB().get('company');
     const companyPage = companyDB
-      .filter(filterParams(rest))
+      .search(rest)
       .sortBy('createTime')
       .pagination(pageNum, pageSize)
       .value();

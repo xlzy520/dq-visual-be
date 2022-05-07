@@ -43,9 +43,9 @@ Content-Type: application/json
 Authorization: Bearer {{token}}
 
 {
-  "page": 1,
-  "size": 10
-
+  "pageNum": 1,
+  "pageSize": 10,
+  "shopName": "123"
 }
 
 ### 添加订单
@@ -63,16 +63,18 @@ Authorization: Bearer {{token}}
 }
 
 ### 更新订单
-POST {{url}}/order/update
+POST {{url}}/order/edit
 Content-Type: application/json
 Authorization: Bearer {{token}}
 
 {
-  "id": "f82ce8b5-7df1-4d4b-bf4b-2b786b5a9107",
+  "id": "f8d8ec54-9ac2-4530-922a-e836f32de1d1",
   "shopName": "123456789",
   "username": "231231",
   "address": "1",
   "shopAddress": "1",
   "price": 9,
-  "PaymentStatus": "1"
+  "PaymentStatus": "1",
+  "createTime": 1651576403191,
+  "updateTime": 1651890715342
 }

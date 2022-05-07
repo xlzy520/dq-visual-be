@@ -1,8 +1,7 @@
 const { DB } = require('../db');
 const result = require('../utils/result');
 const Joi = require('joi');
-const {value} = require("lodash/seq");
-const {filterParams} = require('../utils/index')
+const { filterParams } = require('../utils/index');
 
 const OrderSchema = Joi.object({
   shopName: Joi.string()
@@ -27,15 +26,11 @@ const OrderSchema = Joi.object({
   updateTime: Joi.date(),
 });
 
-// 过滤非空属性
-
-
-
 class OrderController {
   static page(ctx) {
-    const { pageNum = 1, pageSize = 10, ...rest} = ctx.request.body;
+    const { pageNum = 1, pageSize = 10, ...rest } = ctx.request.body;
     const OrderDB = DB().get('orders');
-    const ordersPage = OrderDB.filter(filterParams(rest))
+    const ordersPage = OrderDB.search(rest)
       .sortBy('createTime')
       .pagination(pageNum, pageSize)
       .value();
@@ -61,8 +56,7 @@ class OrderController {
     if (error) {
       ctx.body = result(null, error.message, false);
     } else {
-      ordersDB.find({ id }).assign(rest).write();
-      ctx.body = result(null, '更新成功');
+      ordersDB.find({ id }).assign(rest, ctx).write();
     }
   }
 

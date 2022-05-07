@@ -14,7 +14,7 @@ const UserSchema = Joi.object({
   password: Joi.string()
     .required()
     .error((errors) => new Error('密码不能为空')),
-  creatTime: Joi.date(),
+  createTime: Joi.date(),
   updateTime: Joi.date(),
 });
 
