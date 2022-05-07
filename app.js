@@ -1,14 +1,15 @@
 const Koa = require('koa');
-const app = new Koa(); // 第一步:创建实例
+const path = require('path');
 const cors = require('koa-cors');
 const views = require('koa-views');
-const json = require('koa-json');
+// const json = require('koa-json');
 const jwt = require('jsonwebtoken');
 const koajwt = require('koa-jwt');
 const onerror = require('koa-onerror');
-const bodyparser = require('koa-bodyparser');
+const koaBody = require('koa-body');
 const logger = require('koa-logger');
 
+const app = new Koa(); // 第一步:创建实例
 const { createDB } = require('./db');
 createDB();
 
@@ -18,6 +19,7 @@ const order = require('./routes/order');
 const trade = require('./routes/trade');
 const category = require('./routes/category');
 const company = require('./routes/company');
+const common = require('./routes/common');
 
 const SECRET = 'secret'; // demo，可更换
 
@@ -28,11 +30,17 @@ app.use(cors());
 
 // middlewares 第二步:app.use()传入中间件
 app.use(
-  bodyparser({
-    enableTypes: ['json', 'form', 'text'],
+  koaBody({
+    multipart: true,
+    formidable: {
+      //上传文件存储目录
+      uploadDir: path.join(__dirname, `/public`),
+      //允许保留后缀名
+      keepExtensions: true,
+    },
   }),
 );
-app.use(json());
+// app.use(json());
 app.use(logger());
 app.use(require('koa-static')(__dirname + '/public'));
 
@@ -91,7 +99,7 @@ app.use(async (ctx, next) => {
 app.use(
   koajwt({ secret: SECRET }).unless({
     // 登录，注册接口不需要验证
-    path: [/^\/user\/login/, /^\/user\/register/],
+    path: [/^\/user\/login/, /^\/user\/register/, /^\/public/],
   }),
 );
 
@@ -101,6 +109,7 @@ app.use(order.routes(), order.allowedMethods()); // 订单模块路由
 app.use(trade.routes(), trade.allowedMethods()); // 贸易统计模块路由
 app.use(category.routes(), category.allowedMethods()); // 分类模块路由
 app.use(company.routes(), company.allowedMethods()); // 企业模块路由
+app.use(common.routes(), common.allowedMethods()); // 企业模块路由
 
 // error-handling
 app.on('error', (err, ctx) => {
