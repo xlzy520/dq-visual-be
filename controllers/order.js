@@ -10,6 +10,9 @@ const OrderSchema = Joi.object({
   username: Joi.string()
     .required()
     .error((errors) => new Error('用户名不能为空')),
+  phone: Joi.string()
+    .required()
+    .error((errors) => new Error('手机号不能为空')),
   address: Joi.string()
     .required()
     .error((errors) => new Error('地址不能为空')),
