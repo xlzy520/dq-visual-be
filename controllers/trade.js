@@ -31,11 +31,11 @@ const tradeSchema = Joi.object({
 
 class Controller {
   static page(ctx) {
-    const { page = 1, pageSize = 10 } = ctx.request.body;
+    const { pageNum = 1, pageSize = 10 } = ctx.request.body;
     const tradeDB = DB().get('trade');
     const tradePage = tradeDB
       .sortBy('createTime')
-      .pagination(page, pageSize)
+      .pagination(pageNum, pageSize)
       .value();
     ctx.body = result(tradePage);
   }

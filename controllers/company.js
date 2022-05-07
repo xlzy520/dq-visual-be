@@ -1,6 +1,8 @@
 const { DB } = require('../db');
 const result = require('../utils/result');
 const Joi = require('joi');
+const {filterParams} = require('../utils/index')
+
 
 const CompanySchema = Joi.object({
   name: Joi.string()
@@ -19,16 +21,18 @@ const CompanySchema = Joi.object({
   year: Joi.string()
     .required()
     .error((errors) => new Error('利润年份year不能为空')),
+  createTime: Joi.date(),
+  updateTime: Joi.date(),
 });
 
 class Controller {
   static page(ctx) {
-    const { page = 1, pageSize = 10, ...rest } = ctx.request.body;
+    const { pageNum = 1, pageSize = 10, ...rest } = ctx.request.body;
     const companyDB = DB().get('company');
     const companyPage = companyDB
-      .filter(rest)
+      .filter(filterParams(rest))
       .sortBy('createTime')
-      .pagination(page, pageSize)
+      .pagination(pageNum, pageSize)
       .value();
     ctx.body = result(companyPage);
   }

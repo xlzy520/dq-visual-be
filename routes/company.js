@@ -10,7 +10,7 @@ router.prefix('/company');
 // 订单分页列表
 router.post('/page', company.page);
 router.post('/add', company.add);
-router.post('/update', company.update);
+router.post('/edit', company.update);
 router.post('/detail', company.detail);
 router.post('/delete', company.delete);
 

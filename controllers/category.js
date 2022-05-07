@@ -1,21 +1,27 @@
 const { DB } = require('../db');
 const result = require('../utils/result');
 const Joi = require('joi');
+const {filterParams} = require('../utils/index')
 
 const CategorySchema = Joi.object({
   name: Joi.string()
     .required()
     .error((errors) => new Error('电机名称不能为空')),
+  desc: Joi.string()
+    .required()
+    .error((errors) => new Error('电机简介不能为空')),
+  createTime: Joi.date(),
+  updateTime: Joi.date(),
 });
 
 class Controller {
   static page(ctx) {
-    const { page = 1, pageSize = 10, ...rest } = ctx.request.body;
+    const { pageNum = 1, pageSize = 10, ...rest } = ctx.request.body;
     const categoryDB = DB().get('category');
     const pageData = categoryDB
-      .filter(rest)
+      .filter(filterParams(rest))
       .sortBy('createTime')
-      .pagination(page, pageSize)
+      .pagination(pageNum, pageSize)
       .value();
     ctx.body = result(pageData);
   }

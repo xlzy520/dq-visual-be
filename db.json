@@ -18,19 +18,149 @@
       "creatTime": 1651576348926
     },
     {
-      "shopName": "123456789",
-      "username": "231231",
-      "address": "1",
-      "shopAddress": "1",
-      "price": 9,
-      "PaymentStatus": "1",
-      "id": "f82ce8b5-7df1-4d4b-bf4b-2b786b5a9107",
-      "creatTime": 1651576403191,
-      "updateTime": 1651576773513
+      "shopName": "1",
+      "username": "2",
+      "shopAddress": "4",
+      "address": "5",
+      "price": "3",
+      "PaymentStatus": "2",
+      "id": "f8d8ec54-9ac2-4530-922a-e836f32de1d1",
+      "creatTime": 1651736789759,
+      "updateTime": 1651736789759
+    },
+    {
+      "shopName": "12",
+      "username": "34",
+      "shopAddress": "2",
+      "address": "2",
+      "price": "567",
+      "PaymentStatus": "2",
+      "id": "0bec75bb-a332-44cd-b10d-ba2b1a1a5a1d",
+      "creatTime": 1651772951030,
+      "updateTime": 1651772951030
     }
   ],
-  "company": [],
-  "category": [],
+  "company": [
+    {
+      "name": "1",
+      "address": "1",
+      "profit": "1",
+      "phone": "1",
+      "year": "1",
+      "id": "3c37a8ef-3664-4f02-a3c4-9c227ed78eef",
+      "creatTime": 1651855496554,
+      "updateTime": 1651855496554
+    },
+    {
+      "name": "111",
+      "address": "111",
+      "profit": "111",
+      "phone": "111",
+      "year": "111",
+      "id": "107bd8cf-d461-40df-bb0c-39cc7b985920",
+      "creatTime": 1651855509401,
+      "updateTime": 1651855509401
+    },
+    {
+      "name": "11",
+      "address": "11",
+      "profit": "11",
+      "phone": "11",
+      "year": "11",
+      "id": "ba654915-08fd-4444-bf3f-f3e56e67d1ab",
+      "creatTime": 1651855533258,
+      "updateTime": 1651855533258
+    },
+    {
+      "name": "2",
+      "address": "2",
+      "profit": "2",
+      "phone": "2",
+      "year": "2",
+      "id": "bb1370a1-c77c-4cc2-9f8d-019728e0ef01",
+      "creatTime": 1651855559240,
+      "updateTime": 1651855559240
+    },
+    {
+      "name": "3",
+      "address": "3",
+      "profit": "3",
+      "phone": "3",
+      "year": "3",
+      "id": "97b2205d-b22c-4e46-8aae-6c226ef07efc",
+      "creatTime": 1651855599851,
+      "updateTime": 1651855599851
+    },
+    {
+      "name": "4",
+      "address": "4",
+      "profit": "4",
+      "phone": "4",
+      "year": "4",
+      "id": "f7aa5675-e9aa-4045-aa55-6016052dc3e9",
+      "creatTime": 1651855608097,
+      "updateTime": 1651855608097
+    },
+    {
+      "name": "5",
+      "address": "5",
+      "profit": "5",
+      "phone": "5",
+      "year": "5",
+      "id": "9ccb856b-6a3b-44ff-ad0e-5e7d3c1f0f30",
+      "creatTime": 1651855616408,
+      "updateTime": 1651855616408
+    },
+    {
+      "name": "6",
+      "address": "6",
+      "profit": "6",
+      "phone": "6",
+      "year": "6",
+      "id": "c17afba5-1114-41ed-8906-247c83c5cd15",
+      "creatTime": 1651855625381,
+      "updateTime": 1651855625381
+    },
+    {
+      "name": "6",
+      "address": "6",
+      "profit": "6",
+      "phone": "6",
+      "year": "6",
+      "id": "a3461165-70a9-4b87-98b4-e06da0990e92",
+      "creatTime": 1651855641946,
+      "updateTime": 1651855641946
+    },
+    {
+      "name": "12",
+      "address": "12",
+      "profit": "12",
+      "phone": "12",
+      "year": "12",
+      "id": "38ad992e-71df-447f-b3fd-36a459eda9b8",
+      "creatTime": 1651855657409,
+      "updateTime": 1651855657409
+    },
+    {
+      "name": "11111",
+      "address": "111",
+      "profit": "111",
+      "phone": "111",
+      "year": "111",
+      "id": "1cd84466-19c1-47b7-bca2-3e7c4e533093",
+      "creatTime": 1651855669911,
+      "updateTime": 1651855669911
+    }
+  ],
+  "category": [
+    {
+      "name": "1312",
+      "desc": "31231231231",
+      "id": "b845d9b0-38c3-4c96-b6f5-0d8525f6565d",
+      "creatTime": 1651852051728,
+      "updateTime": 1651852397256
+    }
+  ],
   "不同类型电机出进口额的统计": [
     {
       "year": 2016,

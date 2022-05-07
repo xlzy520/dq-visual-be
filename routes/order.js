@@ -10,7 +10,7 @@ router.prefix('/order');
 // 订单分页列表
 router.post('/page', Order.page);
 router.post('/add', Order.add);
-router.post('/update', Order.update);
+router.post('/edit', Order.update);
 router.post('/detail', Order.detail);
 router.post('/delete', Order.delete);
 
