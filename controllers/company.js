@@ -55,7 +55,7 @@ class Controller {
     if (error) {
       ctx.body = result(null, error.message, false);
     } else {
-      companyDB.find({ id }).assign(rest).write();
+      companyDB.find({ id }).assign(rest,ctx).write();
       ctx.body = result(null, '更新成功');
     }
   }

@@ -22,7 +22,7 @@ const OrderSchema = Joi.object({
   price: Joi.number()
     .required()
     .error((errors) => new Error('价格不能为空')),
-  PaymentStatus: Joi.string()
+  PaymentStatus: Joi.number()
     .required()
     .error((errors) => new Error('支付状态不能为空')),
   createTime: Joi.date(),

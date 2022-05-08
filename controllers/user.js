@@ -133,7 +133,7 @@ class UserController {
     if (bcrypt.compareSync(password, user.password)) {
       const salt = bcrypt.genSaltSync(); // 密码加密的计算强度默认10级
       const hash = bcrypt.hashSync(newPassword, salt);
-      usersDB.find({ id }).assign({ password: hash }).write();
+      usersDB.find({ id }).assign({ password: hash }, ctx).write();
       ctx.body = result(null, '修改密码成功');
     } else {
       ctx.body = result(null, error_msg.answer_error, false);

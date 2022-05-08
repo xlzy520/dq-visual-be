@@ -47,7 +47,7 @@ class Controller {
     if (error) {
       ctx.body = result(null, error.message, false);
     } else {
-      categoryDB.find({ id }).assign(rest).write();
+      categoryDB.find({ id }).assign(rest,ctx).write();
       ctx.body = result(null, '更新成功');
     }
   }

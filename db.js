@@ -21,6 +21,7 @@ const createDB = async () => {
       });
     },
     assign: (data, values, ctx) => {
+      console.log(ctx);
       if (!data) {
         ctx.body = result(null, '数据不存在', false);
       } else {
