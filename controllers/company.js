@@ -29,8 +29,8 @@ class Controller {
     const { pageNum = 1, pageSize = 10, ...rest } = ctx.request.body;
     const companyDB = DB().get('company');
     const companyPage = companyDB
+      .orderBy('createTime', 'desc')
       .search(rest)
-      .sortBy('createTime')
       .pagination(pageNum, pageSize)
       .value();
     ctx.body = result(companyPage);
@@ -55,7 +55,7 @@ class Controller {
     if (error) {
       ctx.body = result(null, error.message, false);
     } else {
-      companyDB.find({ id }).assign(rest,ctx).write();
+      companyDB.find({ id }).assign(rest, ctx).write();
       ctx.body = result(null, '更新成功');
     }
   }

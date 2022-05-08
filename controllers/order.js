@@ -33,8 +33,8 @@ class OrderController {
   static page(ctx) {
     const { pageNum = 1, pageSize = 10, ...rest } = ctx.request.body;
     const OrderDB = DB().get('orders');
-    const ordersPage = OrderDB.search(rest)
-      .sortBy('createTime')
+    const ordersPage = OrderDB.orderBy('createTime', 'desc')
+      .search(rest)
       .pagination(pageNum, pageSize)
       .value();
     ctx.body = result(ordersPage);

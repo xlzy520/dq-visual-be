@@ -2,40 +2,23 @@
   "tasks": [],
   "users": [
     {
-      "id": "4113d54f-4b98-4680-adc6-d6c9b82cdd0e",
       "username": "zhibi",
-      "password": "$2a$10$EaL7ZqbVwuuVCKqMiMsOOed3DHTVYayI7kq3oTRxfKTroCTPlThHq",
-      "updateTime": 1651943486228
+      "password": "$2a$10$qngU5KvrS9zKRZPK0tQl2OBZDhJnk3TLWtstmePWRCH6A697yPkcu",
+      "id": "2c1b3618-3979-4be1-b5b9-9a9d0427b836",
+      "createTime": 1651997462739,
+      "updateTime": 1651999781450
     },
     {
-      "username": "zhibi31231",
-      "password": "$2a$10$sDXNmJJY8r6Fe/OP32EK8uyxT6GAZ5I1T2gHZjofqNr65if3jVTEm",
-      "id": "b5f0ea3a-2c5a-407b-913a-d868de1faaac",
-      "createTime": 1651996718125,
-      "updateTime": 1651996718125
-    },
-    {
-      "username": "测试1234567",
-      "password": "$2a$10$RKJmYUVIFh.o2OtnhGx1euV2XfbB8ynPjf4Vvow5x7.jMRhCLYMOK",
-      "id": "ae414ebc-b709-4660-9cc3-0babe4fff775",
-      "createTime": 1651996989076,
-      "updateTime": 1651996989076
+      "username": "zhibi887777772121",
+      "password": "$2a$10$QacQW5FvIiSWbuorZO04bO07jvp9dnWpJRAfLm7TRYZpRj01XOFMO",
+      "id": "12a497d2-135b-405b-8138-62ff215b0199",
+      "createTime": 1651999800292,
+      "updateTime": 1651999800292
     }
   ],
   "orders": [
     {
-      "shopName": "1",
-      "username": "2",
-      "shopAddress": "4",
-      "address": "5",
-      "price": "3",
-      "PaymentStatus": "2",
-      "id": "f8d8ec54-9ac2-4530-922a-e836f32de1d1",
-      "createTime": 1651736789759,
-      "updateTime": 1651736789759
-    },
-    {
-      "shopName": "12",
+      "shopName": "12132131",
       "username": "34",
       "shopAddress": "2",
       "address": "2",
@@ -43,7 +26,8 @@
       "PaymentStatus": "2",
       "id": "0bec75bb-a332-44cd-b10d-ba2b1a1a5a1d",
       "createTime": 1651772951030,
-      "updateTime": 1651772951030
+      "updateTime": 1651997546974,
+      "phone": "131231"
     },
     {
       "shopName": "1",
@@ -101,17 +85,6 @@
       "updateTime": 1651912751300
     },
     {
-      "shopName": "5",
-      "username": "5",
-      "price": "5",
-      "PaymentStatus": "2",
-      "shopAddress": "5",
-      "address": "5",
-      "id": "b79920d1-1fe5-427a-99b9-31aac03983ec",
-      "createTime": 1651912759758,
-      "updateTime": 1651912759758
-    },
-    {
       "shopName": "6",
       "username": "6",
       "price": "6",
@@ -121,28 +94,6 @@
       "id": "2c4a317a-7ad6-42c4-9af8-c6d829a507bd",
       "createTime": 1651912769469,
       "updateTime": 1651912769469
-    },
-    {
-      "shopName": "8",
-      "username": "8",
-      "price": "8",
-      "PaymentStatus": "3",
-      "shopAddress": "8",
-      "address": "8",
-      "id": "47cf63c6-4ddf-42a0-8a44-dc2d51541b83",
-      "createTime": 1651912781443,
-      "updateTime": 1651912781443
-    },
-    {
-      "shopName": "1",
-      "username": "1",
-      "price": "1",
-      "PaymentStatus": "3",
-      "shopAddress": "1",
-      "address": "1",
-      "id": "f599a740-ca84-4129-8ff5-d71a1b172c72",
-      "createTime": 1651930433960,
-      "updateTime": 1651930433960
     },
     {
       "shopName": "312321312",
@@ -155,6 +106,30 @@
       "id": "21a07c66-b838-46fd-8a0a-53b1e45fd846",
       "createTime": 1651995532499,
       "updateTime": 1651995532499
+    },
+    {
+      "shopName": "test",
+      "username": "13123",
+      "phone": "13533333333",
+      "price": "3131",
+      "PaymentStatus": 2,
+      "shopAddress": "31231",
+      "address": "3213",
+      "id": "ec0559ca-b00f-4bf2-a12d-3e6dbf1d974a",
+      "createTime": 1651997559410,
+      "updateTime": 1652000052882
+    },
+    {
+      "shopName": "test123",
+      "username": "2112",
+      "phone": "13544444444",
+      "price": "2312",
+      "PaymentStatus": 3,
+      "shopAddress": "312",
+      "address": "31",
+      "id": "ba98d346-352e-49ff-bde3-9ab1a7a9cdfd",
+      "createTime": 1652000187158,
+      "updateTime": 1652000187158
     }
   ],
   "company": [
@@ -267,16 +242,52 @@
       "id": "1cd84466-19c1-47b7-bca2-3e7c4e533093",
       "createTime": 1651855669911,
       "updateTime": 1651855669911
+    },
+    {
+      "name": "3123",
+      "address": "312",
+      "profit": "3123",
+      "phone": "12312",
+      "year": "2025",
+      "id": "4b75a908-9ffd-4ae5-b613-c7ca22f631b3",
+      "createTime": 1651999465079,
+      "updateTime": 1651999465079
+    },
+    {
+      "name": "test",
+      "address": "312",
+      "profit": "312",
+      "phone": "13544444444",
+      "year": "2020",
+      "id": "c3777738-8bc2-469f-ab6b-fb5ff6568f34",
+      "createTime": 1652000202206,
+      "updateTime": 1652000208536
     }
   ],
   "category": [
     {
-      "imgUrl": "http://localhost:5001/9a59ae175c789ce8c215be11c.jpg",
-      "name": "1",
-      "desc": "1",
-      "id": "52b0b0ea-6025-4b86-a6d6-9b05cdc230a9",
-      "createTime": 1651993366135,
-      "updateTime": 1651993965168
+      "name": "12321",
+      "desc": "312",
+      "imgUrl": "http://localhost:5001/bc53eadecae6cc55e8132db02.jpeg",
+      "id": "691704a2-f568-45c3-b141-a2fdcd65e1ce",
+      "createTime": 1651998576287,
+      "updateTime": 1651998576287
+    },
+    {
+      "name": "32adasd",
+      "desc": "dasd",
+      "imgUrl": "http://localhost:5001/bc53eadecae6cc55e8132db03.png",
+      "id": "4c23e7c3-4448-4b74-b8d3-503e46cbfc7b",
+      "createTime": 1651998600619,
+      "updateTime": 1651998600619
+    },
+    {
+      "name": "12312",
+      "desc": "312",
+      "imgUrl": "http://localhost:5001/ca16f7f70efa5aa9d90eb8c02.jpg",
+      "id": "b2d4dbb6-0fa0-4acf-95d0-229437fd51cf",
+      "createTime": 1652000224293,
+      "updateTime": 1652000230717
     }
   ],
   "不同类型电机出进口额的统计": [

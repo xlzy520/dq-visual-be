@@ -21,8 +21,8 @@ class Controller {
     const { pageNum = 1, pageSize = 10, ...rest } = ctx.request.body;
     const categoryDB = DB().get('category');
     const pageData = categoryDB
+      .orderBy('createTime', 'desc')
       .search(rest)
-      .sortBy('createTime')
       .pagination(pageNum, pageSize)
       .value();
     ctx.body = result(pageData);
@@ -47,7 +47,7 @@ class Controller {
     if (error) {
       ctx.body = result(null, error.message, false);
     } else {
-      categoryDB.find({ id }).assign(rest,ctx).write();
+      categoryDB.find({ id }).assign(rest, ctx).write();
       ctx.body = result(null, '更新成功');
     }
   }
