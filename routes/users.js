@@ -17,6 +17,7 @@ router.post('/login', UserController.login);
 router.get('/info', UserController.getUserInfo);
 // 获取用户列表
 router.post('/list', UserController.getUserList);
+// 修改密码
 router.post('/resetPassword', UserController.resetPassword);
 
 module.exports = router;

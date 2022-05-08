@@ -6,10 +6,10 @@ const { filterParams } = require('../utils/index');
 const OrderSchema = Joi.object({
   shopName: Joi.string()
     .required()
-    .error((errors) => new Error('店铺名称不能为空')),
+    .error((errors) => new Error('企业名称不能为空')),
   username: Joi.string()
     .required()
-    .error((errors) => new Error('用户名不能为空')),
+    .error((errors) => new Error('联系人不能为空')),
   phone: Joi.string()
     .required()
     .error((errors) => new Error('手机号不能为空')),
@@ -18,7 +18,7 @@ const OrderSchema = Joi.object({
     .error((errors) => new Error('地址不能为空')),
   shopAddress: Joi.string()
     .required()
-    .error((errors) => new Error('店铺地址不能为空')),
+    .error((errors) => new Error('企业地址不能为空')),
   price: Joi.number()
     .required()
     .error((errors) => new Error('价格不能为空')),

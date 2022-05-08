@@ -18,8 +18,8 @@ const UserSchema = Joi.object({
   updateTime: Joi.date(),
 });
 
-const generateToken = (username) => {
-  const token = jwt.sign({ username }, secret.sign, {
+const generateToken = (username, id) => {
+  const token = jwt.sign({ username, id }, secret.sign, {
     expiresIn: '2d',
   });
   return token;
@@ -53,8 +53,9 @@ class UserController {
           password: hash,
         };
         usersDB.push(newUser).write();
+        const id = usersDB.find({username}).value().id
         // 签发token
-        const token = generateToken(username);
+        const token = generateToken(username, id);
         ctx.body = result(
           {
             token,
@@ -90,7 +91,7 @@ class UserController {
         // 查询用户密码是否正确
         if (bcrypt.compareSync(password, user.password)) {
           // 签发token
-          const token = generateToken(username);
+          const token = generateToken(username, user.id,);
           ctx.body = result(
             {
               id: user.id,
@@ -121,6 +122,10 @@ class UserController {
     let { id, newPassword, password } = ctx.request.body;
     if (!newPassword || !password) {
       ctx.body = result(null, error_msg.password_null, false);
+      return;
+    }
+    if (!id) {
+      ctx.body = result(null, "用户ID为空", false);
       return;
     }
     const usersDB = DB().get('users');
